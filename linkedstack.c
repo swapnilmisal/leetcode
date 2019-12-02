@@ -1,115 +1,109 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct node{
-int n;
-struct node * next;
-}*top=NULL,*head=NULL;
+struct node {
+  int n;
+  struct node *next;
+} *top = NULL, *head = NULL;
 
+struct node *create_node(int n) {
 
-struct node *create_node(int n){
+  struct node *p = (struct node *)malloc(sizeof(struct node));
+  p->n = n;
+  p->next = NULL;
 
-struct node *p=(struct node *)malloc(sizeof(struct node));
-p->n=n;
-p->next=NULL;
-
-return p;
-
+  return p;
 }
 
-int push(int n){
+int push(int n) {
 
-struct node *p=create_node(n);
-struct node *q=head;
+  struct node *p = create_node(n);
+  struct node *q = head;
 
-	if(!top){
-	head=p;
-	}
-	else{
-	top->next=p;
-	}
-	
-	top=p;
+  if (!top) {
+    head = p;
+  } else {
+    top->next = p;
+  }
 
-return 0;
+  top = p;
+
+  return 0;
 }
-int pop(){
+int pop() {
 
-	struct node *p=head;
-	struct node *q=head;
+  struct node *p = head;
+  struct node *q = head;
 
-	if(!top){
-	printf("\nStack Underflow");
-	}
-	else{
+  if (!top) {
+    printf("\nStack Underflow");
+  } else {
 
-	while(p->next){
-	
-	q=p;
-	p=p->next;
-	}
+    while (p->next) {
 
-	printf("\nPopped object:  %d",p->n);
-	q->next=NULL;
-	top=q;
-	if(top==p){
-	head=top=NULL;
-	}
-	free(p);
-}
-return 0;
+      q = p;
+      p = p->next;
+    }
+
+    printf("\nPopped object:  %d", p->n);
+    q->next = NULL;
+    top = q;
+    if (top == p) {
+      head = top = NULL;
+    }
+    free(p);
+  }
+  return 0;
 }
 
-int stack_top(){
+int stack_top() {
 
-	if(!top)
-	printf("\nStack Underflow");
-	else
-	printf("\n\tTOP OBJECT: %d",top->n);
-return 0;
+  if (!top)
+    printf("\nStack Underflow");
+  else
+    printf("\n\tTOP OBJECT: %d", top->n);
+  return 0;
 }
 
-int main(){
+int main() {
 
+  int choice;
+  int n;
 
+  printf("\n\tEnter your "
+         "choice\n\t1:push\n\t2:pop\n\t3:top\n\t4:print\n\t0:Exit\n\t");
+  scanf("%d", &choice);
 
-int choice;
-int n;
+  while (choice) {
 
-printf("\n\tEnter your choice\n\t1:push\n\t2:pop\n\t3:top\n\t4:print\n\t0:Exit\n\t");
-scanf("%d",&choice);
+    switch (choice) {
 
-while(choice){
+    case 1:
+      printf("\nEnter number to insert");
+      scanf("%d", &n);
+      push(n);
+      break;
 
+    case 2:
+      pop();
+      break;
 
-	switch(choice){
+    case 3:
+      stack_top();
+      break;
 
-	case 1: printf("\nEnter number to insert");
-		scanf("%d",&n);
-		push(n);
-		break;
+    case 4:
+      exit(0);
 
-	case 2: pop();
-	break;
-	
-	case 3: stack_top();
-	break;
+    default:
+      exit(0);
+      break;
+    }
 
-	case 4: exit(0);
+    printf("\n\tEnter your "
+           "choice\n\t1:push\n\t2:pop\n\t3:top\n\t4:print\n\t0:Exit\n\t");
+    scanf("%d", &choice);
+  }
 
-	default: exit(0);
-	break;
-	
-
-	}
-
-
-printf("\n\tEnter your choice\n\t1:push\n\t2:pop\n\t3:top\n\t4:print\n\t0:Exit\n\t");
-scanf("%d",&choice);
-
-}
-
-
-
-return 0;
+  return 0;
 }

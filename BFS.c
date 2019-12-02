@@ -1,205 +1,191 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define N 8
 
-struct q{
-	int node;
-	struct q* next;
-}*head=NULL;
+struct q {
+  int node;
+  struct q *next;
+} *head = NULL;
 
 int arr[N];
-struct q* a[N];
+struct q *a[N];
 
+int attach(struct q *p, int i) {
 
+  struct q *itr = a[i];
 
+  if (!a[i])
+    a[i] = p;
+  else {
+    while (itr->next)
+      itr = itr->next;
 
-int attach(struct q* p,int i){
+    itr->next = p;
+  }
 
-	struct q* itr=a[i];
-
-		if(!a[i])
-			a[i]=p;
-	else{
-		while(itr->next)
-			itr=itr->next;
-				
-			itr->next=p;			
-
-			}
-	
-
-return 0;
+  return 0;
 }
 
-int enter(){
+int enter() {
 
-	int i;
-	int j;
-	int node;
-	struct q*p=NULL;
-	for(i=0;i<N;i++){
-			printf("\n\tEnter Total adjuscent vertices for Node: %d   ",i);
-			scanf("%d",&j);
-	
-		while(j--){
-			
-			printf("\n\tEnter adjuscent vertices for Node: %d ",i);
-			scanf("%d",&node);
-			p=(struct q*)malloc(sizeof(struct q));
-			p->node=node;
-			printf("in while%d",p->node);
-			p->next=NULL;
-			attach(p,i);
+  int i;
+  int j;
+  int node;
+  struct q *p = NULL;
+  for (i = 0; i < N; i++) {
+    printf("\n\tEnter Total adjuscent vertices for Node: %d   ", i);
+    scanf("%d", &j);
 
-				}
-		
-		}
-return 0;
+    while (j--) {
+
+      printf("\n\tEnter adjuscent vertices for Node: %d ", i);
+      scanf("%d", &node);
+      p = (struct q *)malloc(sizeof(struct q));
+      p->node = node;
+      printf("in while%d", p->node);
+      p->next = NULL;
+      attach(p, i);
+    }
+  }
+  return 0;
 }
 
-int display(){
+int display() {
 
-	int i;
-	struct q* itr;
+  int i;
+  struct q *itr;
 
-	
-	for(i=0;i<N;i++){
-		
-		printf("\n%d->",i );
-		
-		itr=a[i];
-		while(itr){
-		
-		printf("%d ",itr->node);		
-		itr=itr->next;
+  for (i = 0; i < N; i++) {
 
-		}
-	
+    printf("\n%d->", i);
 
-	}
-	
-return 0;
+    itr = a[i];
+    while (itr) {
+
+      printf("%d ", itr->node);
+      itr = itr->next;
+    }
+  }
+
+  return 0;
 }
 
-int enque(int k){
+int enque(int k) {
 
-	struct q*i;
-	struct q*p=(struct q*)malloc(sizeof(struct q));
-		p->node=k;
-		p->next=NULL;
-		i=head;
-		if(head)
-			while(i->next)
-					i=i->next;
-		i->next=p;	
+  struct q *i;
+  struct q *p = (struct q *)malloc(sizeof(struct q));
+  p->node = k;
+  p->next = NULL;
+  i = head;
+  if (head)
+    while (i->next)
+      i = i->next;
+  i->next = p;
 
-return 0;
+  return 0;
 }
 
-int deque(){
-	
-	struct q*p;		
-		p=head;	
-		head=head->next;
-		free(p);
-return 0;
+int deque() {
+
+  struct q *p;
+  p = head;
+  head = head->next;
+  free(p);
+  return 0;
 }
 
-int bfs(int k){
+int bfs(int k) {
 
-	struct q *p = (struct q*)malloc(sizeof(struct q));
-		p -> node = k;
-		p -> next = NULL;
-		
-		arr[k] = 1;
-		head = p;
-		
-		while(head){
-	
-			p = a[head->node];
+  struct q *p = (struct q *)malloc(sizeof(struct q));
+  p->node = k;
+  p->next = NULL;
 
-			while(p){
-				if(arr[p -> node] == 0){
-					enque(p->node);
-					arr[p->node] = 1;
-				}
-				p = p -> next;
-			}
-			if(head){
-				printf("Elements are *%d ",head -> node);
-				deque();
-				}
-					else	return 0;
-		}
-return 0;		
+  arr[k] = 1;
+  head = p;
+
+  while (head) {
+
+    p = a[head->node];
+
+    while (p) {
+      if (arr[p->node] == 0) {
+        enque(p->node);
+        arr[p->node] = 1;
+      }
+      p = p->next;
+    }
+    if (head) {
+      printf("Elements are *%d ", head->node);
+      deque();
+    } else
+      return 0;
+  }
+  return 0;
 }
 
-int dfs(int k){
+int dfs(int k) {
 
-		struct q *p;
-			p = a[k];
-		arr[k] = 1;
-		printf("Elements are *%d ",k);
-		
+  struct q *p;
+  p = a[k];
+  arr[k] = 1;
+  printf("Elements are *%d ", k);
 
-		while(p){
-			if(arr[p->node] == 0)
-					dfs( p -> node);
-						
-					p = p -> next;
-				}
-return 0;
+  while (p) {
+    if (arr[p->node] == 0)
+      dfs(p->node);
+
+    p = p->next;
+  }
+  return 0;
 }
 
-int main(){
+int main() {
 
-	int choice=1,k;
-	int i=0;
-	while(choice){
+  int choice = 1, k;
+  int i = 0;
+  while (choice) {
 
-		printf("\n\t1:Input Graph\n\t2:Display\n\t3:BFS\n\t4:DFS\n\t0:Exit\n");
-		scanf("%d",&choice);
+    printf("\n\t1:Input Graph\n\t2:Display\n\t3:BFS\n\t4:DFS\n\t0:Exit\n");
+    scanf("%d", &choice);
 
-		switch(choice){
+    switch (choice) {
 
+    case 1:
+      enter();
+      break;
 
-			case 1:	enter();
-				break;
+    case 2:
+      display();
+      break;
 
-			case 2: display();
-				break;
-			
-			case 3: 
-				printf("\nEnter Intial Vertex ");	
-				scanf("%d",&k);
-				for(i=0;i<N;i++)
-					arr[i]=0;
-				bfs(k);
-				break;
+    case 3:
+      printf("\nEnter Intial Vertex ");
+      scanf("%d", &k);
+      for (i = 0; i < N; i++)
+        arr[i] = 0;
+      bfs(k);
+      break;
 
-			case 4: 
-				printf("\nEnter Intial Vertex ");	
-				scanf("%d",&k);
-				
-				for(i=0;i<N;i++)
-					arr[i]=0;
-				dfs(k);
-				break;
-			case 5: 
-				printf("\nEnter Intial Vertex ");	
-				scanf("%d",&k);
-				
-				for(i=0;i<N;i++)
-					arr[i]=0;
-				
-//				spiral(k);
-				break;
-			default: 
-				break;
-				
-				}
-		
+    case 4:
+      printf("\nEnter Intial Vertex ");
+      scanf("%d", &k);
 
-			}
-return 0;
+      for (i = 0; i < N; i++)
+        arr[i] = 0;
+      dfs(k);
+      break;
+    case 5:
+      printf("\nEnter Intial Vertex ");
+      scanf("%d", &k);
+
+      for (i = 0; i < N; i++)
+        arr[i] = 0;
+
+      //				spiral(k);
+      break;
+    default:
+      break;
+    }
+  }
+  return 0;
 }
