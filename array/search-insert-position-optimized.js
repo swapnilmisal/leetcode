@@ -12,6 +12,8 @@ var test = require("./__test__/search-insert-position.test");
 var searchInsert = function (nums, target) {
   let begin = 0;
   let end = nums.length - 1;
+  if (target <= nums[begin]) return begin;
+  if (target > nums[end]) return end + 1;
   while (begin <= end) {
     let i = Math.trunc((begin + end) / 2);
     if (target === nums[i]) {
@@ -19,18 +21,12 @@ var searchInsert = function (nums, target) {
     }
     if (target > nums[i]) {
       begin = i + 1;
-      if (begin >= nums.length) return begin;
     } else {
       end = i - 1;
-      if (end < 0) return 0;
     }
   }
 
-  if (target <= nums[begin]) {
-    return begin;
-  }
-
-  return begin + 1;
+  return end + 1;
 };
 
 console.log("testing Search Insert");

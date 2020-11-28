@@ -1,28 +1,22 @@
-var test = require("./__test__/search-insert-position.test");
-
 /**
- *
  * Checkout the LeetCode problem description
  * {@link https://leetcode.com/problems/search-insert-position/ LeetCode}.
  * @author Swapnil Misal <swapnil.misal@gmail.com>
  * @param {number[]} nums
  * @param {number} target
- * @return {number}
+ * @return {numberj
  */
 var searchInsert = function (nums, target) {
   let begin = 0;
   let end = nums.length - 1;
-  while (begin <= end) {
+  while (end - begin > 0) {
     let i = Math.trunc((begin + end) / 2);
     if (target === nums[i]) {
       return i;
-    }
-    if (target > nums[i]) {
+    } else if (target > nums[i]) {
       begin = i + 1;
-      if (begin >= nums.length) return begin;
     } else {
       end = i - 1;
-      if (end < 0) return 0;
     }
   }
 
@@ -32,7 +26,3 @@ var searchInsert = function (nums, target) {
 
   return begin + 1;
 };
-
-console.log("testing Search Insert");
-test(searchInsert);
-console.log("passed test for testing Search Insert");
