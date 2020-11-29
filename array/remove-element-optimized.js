@@ -1,5 +1,4 @@
 /**
- *
  * Checkout the LeetCode problem description
  * {@link https://leetcode.com/problems/remove-element/ LeetCode}.
  * @author Swapnil Misal <swapnil.misal@gmail.com>

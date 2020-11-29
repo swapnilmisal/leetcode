@@ -1,5 +1,3 @@
-var test = require("./__test__/search-insert-position.test");
-
 /**
  *
  * Checkout the LeetCode problem description
@@ -33,6 +31,7 @@ var searchInsert = function (nums, target) {
   return begin + 1;
 };
 
+var test = require("./__test__/search-insert-position.test");
 console.log("testing Search Insert");
 test(searchInsert);
 console.log("passed test for testing Search Insert");

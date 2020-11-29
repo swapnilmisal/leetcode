@@ -1,5 +1,3 @@
-var test = require("./__test__/maximum-subarray.test");
-
 /**
  * Checkout the LeetCode problem description
  * {@link https://leetcode.com/problems/maximum-subarray/ LeetCode}.
@@ -16,6 +14,7 @@ var maxSubArray = function (nums) {
   return sum;
 };
 
+var test = require("./__test__/maximum-subarray.test");
 console.log("testing Maximum SubArray");
 console.time("start");
 test(maxSubArray);

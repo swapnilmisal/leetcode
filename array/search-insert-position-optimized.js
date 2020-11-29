@@ -1,7 +1,4 @@
-var test = require("./__test__/search-insert-position.test");
-
 /**
- *
  * Checkout the LeetCode problem description
  * {@link https://leetcode.com/problems/search-insert-position/ LeetCode}.
  * @author Swapnil Misal <swapnil.misal@gmail.com>
@@ -29,6 +26,7 @@ var searchInsert = function (nums, target) {
   return end + 1;
 };
 
+var test = require("./__test__/search-insert-position.test");
 console.log("testing Search Insert");
 test(searchInsert);
 console.log("passed test for testing Search Insert");
