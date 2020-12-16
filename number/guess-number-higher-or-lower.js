@@ -18,7 +18,7 @@
 var guessNumber = function (n) {
   let b = 1,
     e = n;
-  while (b<=e) {
+  while (b <= e) {
     let num = b + ((e - b) >> 1);
     let output = guess(num);
     if (output === 0) return num;
