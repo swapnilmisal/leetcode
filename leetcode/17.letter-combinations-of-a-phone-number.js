@@ -10,6 +10,29 @@
  * @return {string[]}
  */
 var letterCombinations = function (digits) {
+  const phone = {
+    2: ["a", "b", "c"],
+    3: ["d", "e", "f"],
+    4: ["g", "h", "i"],
+    5: ["j", "k", "l"],
+    6: ["m", "n", "o"],
+    7: ["p", "q", "r", "s"],
+    8: ["t", "u", "v"],
+    9: ["w", "x", "y", "z"],
+  };
+  const output = [];
+  const backtracking = (combination, digits) => {
+    if (digits.length === 0) output.push(combination);
+    else
+      for (const char of phone[digits[0]])
+        backtracking(combination + char, digits.slice(1));
+  };
+
+  if (digits.length) backtracking("", digits);
+
+  return output;
+
+  /* Iterative solution
   const obj = {
     2: ["a", "b", "c"],
     3: ["d", "e", "f"],
@@ -36,5 +59,6 @@ var letterCombinations = function (digits) {
     if (tempRes.length) res = [...tempRes];
   }
   return res;
+  */
 };
 // @lc code=end
