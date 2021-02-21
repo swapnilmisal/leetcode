@@ -23,7 +23,7 @@
  */
 var findMin = function (nums) {
   const binSearch = (b, e) => {
-    if (nums[e] > nums[b]) return binSearch(2 * b - e, b);
+    if (nums[e] > nums[b]) return binSearch(Math.abs(2 * b - e), b);
     if (e - b <= 1) return nums[e];
     return binSearch(Math.ceil((b + e) / 2), e);
   };
