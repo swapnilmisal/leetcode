@@ -10,10 +10,12 @@
  * @return {number}
  */
 var fib = function (n) {
-  if (n == 0) return 0;
-  if (n == 1) return 1;
-  fib.array[n] = fib(n - 1) + fib(n - 2);
-  return fib.array[n];
+  golden_ratio = (1 + 5 ** 0.5) / 2;
+  return ~~((golden_ratio ** n + 1) / 5 ** 0.5);
+
+  // if (n < 2) return n;
+  // fib.array[n] = fib(n - 1) + fib(n - 2);
+  // return fib.array[n];
 };
 fib.array = [];
 // @lc code=end
