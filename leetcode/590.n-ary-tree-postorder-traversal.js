@@ -18,6 +18,19 @@
  * @return {number[]}
  */
 var postorder = function (root) {
+  if (!root) return [];
+  const stack = [];
+  const res = [];
+  stack.push(root);
+  while (stack.length) {
+    const node = stack[stack.length - 1];
+    if (node.visited === undefined) node.visited = -1;
+    node.visited += 1;
+    if (node.visited >= node.children.length) res.push(stack.pop().val);
+    else stack.push(node.children[node.visited]);
+  }
+  return res;
+  /* 
   const res = [];
   const recurse = (node) => {
     if (!node) return;
@@ -26,5 +39,6 @@ var postorder = function (root) {
   };
   recurse(root);
   return res;
+ */
 };
 // @lc code=end
