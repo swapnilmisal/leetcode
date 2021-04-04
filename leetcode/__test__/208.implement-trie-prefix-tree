@@ -1,0 +1,6 @@
+["Trie","insert","search","search","startsWith","insert","search"]
+[[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
+["Trie","insert","insert","search","search","startsWith","insert","search", "startsWith","startsWith","search"]
+[[],["apple"],["applepie"],["apple"],["app"],["app"],["app"],["app"],["pie"],["applep"],["ap"]]
+["Trie","insert","insert","insert","insert","search","startsWith","insert","insert","search","startsWith"]
+[[],["cats"],["cat"],["dog"],["sand"],["catss"],["do"],["and"],["an"],["catsaand"],["cat"]]
