@@ -3,6 +3,7 @@
  * @return {number[][]}
  */
 var merge = function (intervals) {
+  /*
   let lowerLimit = 10 ** 4;
   let upperLimit = 0;
   const response = [];
@@ -34,4 +35,10 @@ var merge = function (intervals) {
     } else i++;
   }
   return response;
+  */
+  const sortedIntervals = intervals.sort((a, b) => a[0] - b[0]);
+  const res = [];
+  for (const interval of sortedIntervals)
+    if (!res.length || res[res.length - 1][1] < interval[0]) res.push(interval);
+    else res[res.length - 1][1] = Math.max(res[res.length - 1][1], interval[1]);
 };
