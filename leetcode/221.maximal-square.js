@@ -3,8 +3,11 @@
  * @return {number}
  */
 var maximalSquare = function (matrix) {
-  // this can be done without using memo, but it will udpate the input matrix which is not a good idea.
   const memo = matrix.map((row) => row.slice());
+  /*
+		We do not need to use 2D memo because this can also be achieved in 1D memo.
+	*/
+
   const rows = memo.length;
   const cols = memo[0].length;
   let max = 0;
@@ -19,7 +22,7 @@ var maximalSquare = function (matrix) {
             memo[i - 1][j - 1]
           );
         }
-        max = max < memo[i][j] ? memo[i][j] : max;
+        max = Math.max(max, memo[i][j]);
       }
     }
   }
