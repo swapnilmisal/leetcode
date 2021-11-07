@@ -12,10 +12,7 @@
  *     this.next = (next===undefined ? null : next)
  * }
  */
-/**
- * @param {ListNode} head
- * @return {number}
- */
+/*
 var getDecimalValue = function (head) {
   let output = 0;
 
@@ -29,5 +26,18 @@ var getDecimalValue = function (head) {
   recurse(head);
 
   return output;
+};
+*/
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+var getDecimalValue = function (head) {
+  let num = 0;
+  do {
+    num = (num << 1) | head.val;
+		head = head.next;
+  } while (head);
+  return num;
 };
 //  code=end
