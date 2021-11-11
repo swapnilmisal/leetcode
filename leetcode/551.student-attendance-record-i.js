@@ -10,6 +10,7 @@
  * @return {boolean}
  */
 var checkRecord = function (s) {
+  /*
   const isAbsent = (str) => {
     let count = 0;
     for (const char of str) {
@@ -29,5 +30,7 @@ var checkRecord = function (s) {
   };
 
   return !isLate(s) && !isAbsent(s);
+  */
+  return !s.match(".*(A.*A|LLL).*");
 };
 // @lc code=end
