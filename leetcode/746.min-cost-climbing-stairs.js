@@ -20,6 +20,8 @@ var minCostClimbingStairs = function(cost) {
    });
 
    return Math.min(a,b);
+//    single line solution
+//    return Math.min(...cost.reduce((acc, current) => [acc[1], Math.min((current+acc[0]), (current+acc[1]))] ,[0,0]));
 };
 // @lc code=end
 
