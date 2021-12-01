@@ -11,6 +11,7 @@
  */
 var jump = function(nums) {
     /*
+    to generate test data
     var array = []
     for (let i = 0; i < 10000; i++) {
         array.push(Math.floor(Math.random() * 1000))
