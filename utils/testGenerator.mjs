@@ -1,3 +1,8 @@
+/**
+ * @param {Number} min minimum number
+ * @param {Number} max maximum number
+ * @returns random number in between passed min and passed max
+ */
 export function getRandom(min, max) {
     let rand = 0;
     var plusOrMinus = 1;
@@ -13,7 +18,14 @@ export function getRandom(min, max) {
     rand += Math.floor(Math.random() * limit) * plusOrMinus;
     return rand;
 }
-
+/**
+ * 
+ * @param {Number} min minimum number
+ * @param {Number} max maximum number
+ * @param {Number} columns number of coloumns 
+ * @param {Number} rows number of rows
+ * @returns {Number[]} array/matrix of numbers between min and max numeber
+ */
 export function getRandomArray(min, max, columns, rows = 1) {
     const matrix = [];
     for (let i = 0; i < rows; i++) {
