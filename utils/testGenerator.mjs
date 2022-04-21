@@ -39,3 +39,27 @@ export function getRandomArray(min, max, columns, rows = 1) {
     return matrix[0];
 }
 
+/**
+ * beta
+ * @param {Number} min minimum number
+ * @param {Number} max maximum number
+ * @param {Number} columns number of coloumns 
+ * @param {Number} rows number of rows
+ * @returns {Number[]} array/matrix of distinct numbers between passed min and max number
+ */
+export function getDistinctRandomArray(min, max, columns, rows = 1) {
+    const matrix = [];
+    for (let i = 0; i < rows; i++) {
+        const array = new Array(columns);
+        for (let j = 0; j < columns; j++) {
+            const random = getRandom(min, max);
+            if (array.indexOf(random) === -1)
+                array[j] = random;
+            else j--;
+        }
+        matrix.push(array);
+    }
+    if (rows > 1) return matrix;
+    return matrix[0];
+}
+
