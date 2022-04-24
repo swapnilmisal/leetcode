@@ -28,7 +28,6 @@ var maxProfit = function (prices) {
   return output;
   */
   return prices.reduce(([min, output], current) => [Math.min(min, current), Math.max(output, current - min)], [Number.POSITIVE_INFINITY, 0])[1];
-
 };
 // @lc code=end
 
