@@ -27,8 +27,16 @@ var maxProfit = function (prices) {
   }, Number.POSITIVE_INFINITY)
   return output;
   */
-  return prices.reduce(([min, output], current) => [Math.min(min, current), Math.max(output, current - min)], [Number.POSITIVE_INFINITY, 0])[1];
+  // return prices.reduce(([min, output], current) => [Math.min(min, current), Math.max(output, current - min)], [Number.POSITIVE_INFINITY, 0])[1];
+  let current = Number.POSITIVE_INFINITY;
+  let output = 0;
+  prices.forEach(price => {
+    output = Math.max(price - current, output);
+    current = Math.min(current, price);
+  })
+  return output;
 };
+
 // @lc code=end
 
 import { getRandomArray } from "../utils/testGenerator.mjs";
